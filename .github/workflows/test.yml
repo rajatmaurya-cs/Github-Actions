@@ -14,7 +14,8 @@ jobs:  # Collection of jobs
   backend:  #  One job
     runs-on: ubuntu-latest
 
-    JWT_SECRET: ${{secrest.JWT_SECRET}}
+    env:
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
 
     steps:  # Collection of steps
       - name: Checkout Repository # name gives a human-readable title to this step.
