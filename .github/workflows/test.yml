@@ -1,4 +1,5 @@
-name: Backend CI
+
+name: Backend CI. # Workflow
 
 on:
   push:
@@ -9,21 +10,35 @@ on:
     branches:
       - main
 
-jobs:
-  backend:
+jobs:  # Collection of jobs
+  backend:  #  One job
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout Repository
+    JWT_SECRET: ${{secrest.JWT_SECRET}}
+
+    steps:  # Collection of steps
+      - name: Checkout Repository # name gives a human-readable title to this step.
         uses: actions/checkout@v4
+
+
+
+#   This is the instruction that tells GitHub what to execute.
+    # It means:
+        #"Run the reusable GitHub Action called checkout (version v4) from the actions organization."
+
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
       - name: Install Dependencies
         run: npm ci
 
       - name: Run Tests
         run: npm test
+
+
+
+       

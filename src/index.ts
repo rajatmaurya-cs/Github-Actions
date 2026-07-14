@@ -1,5 +1,7 @@
 import express from "express";
+
 import cors from "cors";
+
 import "dotenv/config";
 
 const app = express();
@@ -17,5 +19,6 @@ app.get("/health", (req, res) => {
     });
 });
 
+if(process.env.JWT_SECRET) console.log("✅ ok")
 
 export default app;

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-
-import { calculateDiscount } from "../../src/utils/maths";
+import "dotenv/config";
+import { calculateDiscount,hasEnvironmentVariable } from "../../src/utils/maths";
 
 describe("calculateDiscount", () => {
     it("should calculate discount correctly", () => {
@@ -10,4 +10,8 @@ describe("calculateDiscount", () => {
     it("should return original price for 0% discount", () => {
         expect(calculateDiscount(500, 0)).toBe(500);
     });
+
+    it("should return true for correctly loaded enviroment secret from github secre repo",()=>{
+        expect(hasEnvironmentVariable()).toBe(true)
+    })
 });
